@@ -36,6 +36,16 @@ def get_text_from_file(fn):
       return text.decode('utf-8')
     return text
 
+def get_text_from_fiel(filename):
+    try:
+        return open(filename, 'r').read()
+    except UnicodeDecodeError:
+        # convert to ascii
+        if sys.version_info >= (2,6):
+            return open(filename, 'r', encoding='utf-8', errors='ignore').read().encode('ascii')
+        else:
+            raise
+
 
 setup(name='mr.developer',
       version=version,
