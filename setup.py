@@ -42,7 +42,7 @@ def get_text_from_fiel(filename):
     except UnicodeDecodeError:
         # convert to ascii
         if sys.version_info >= (2,6):
-            return open(filename, 'r', encoding='utf-8', errors='ignore').read().encode('ascii')
+            return open(filename, 'r', encoding='utf-8').read().encode('ascii', errror='ignore')
         else:
             raise
 
